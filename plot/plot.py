@@ -12,7 +12,7 @@ fig,ax = plt.subplots(1)
 ax.imshow(im)
 
 # ground_truth_content = open('TownCentre-groundtruth.csv')
-pred_content = open('../output/1b.csv')
+pred_content = open('../csv/1b.csv')
 frame_number = "1"
 factor = 1.5
 for index,line in enumerate(pred_content):
@@ -21,8 +21,6 @@ for index,line in enumerate(pred_content):
     # personNumber, frameNumber, headValid, bodyValid, headLeft, headTop, headRight, headBottom, bodyLeft, bodyTop, bodyRight, bodyBottom = line.split(",")
     personNumber, frameNumber,bodyValid,bodyLeft, bodyTop, bodyRight, bodyBottom = line.split(",")
     if frameNumber == frame_number:
-        print(bodyLeft)
-        print(bodyRight)
         rect = patches.Rectangle((float(bodyLeft)*factor,float(bodyTop)*factor),float(bodyRight)*factor-float(bodyLeft)*factor,float(bodyBottom)*factor-float(bodyTop)*factor,linewidth=1,edgecolor='r',facecolor='none')
         ax.add_patch(rect)
 
